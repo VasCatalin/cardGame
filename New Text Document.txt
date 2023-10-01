@@ -1,0 +1,59 @@
+<!-- <section
+      id="cardBox"
+      class="card-box"
+    >
+      <div
+        id="cardBackground"
+        class="card-background"
+      >
+      </div>
+
+      <section id="cardTOP" class="card-top">
+        <div class="card-power">
+          <img
+            id=""
+            src="./img/frame/minion (7).png"
+            class="card-power-img"
+            alt="/"
+          >
+          <h1 id="cardPower"></h1>
+        </div>
+        <div class="card-name">
+          <img
+            src="/img/frame/minion (6).png"
+            alt="/"
+          >
+          <h1 id="cardName"></h1>
+        </div>
+        <div
+          id="heroImg"
+          class="card-hero"
+        >
+          <img
+            class="hero-img-frame"
+            src="./img/frame/minion (4).png"
+            alt="/"
+          >
+        </div>
+        <div
+          id=""
+          class="card-hero-details"
+        >
+          <div id="rarityDiamond">
+          </div>
+          <img
+            src="./img/frame/minion (2).png"
+            alt="/"
+          >
+          <p id="heroDetails"></p>
+        </div>
+        <div class="card-hero-footer">
+
+          <img
+            src="./img/frame/minion (3).png"
+            alt=""
+          >
+          <h3 id="rarity"></h3>
+        </div>
+      </section>
+    </section> -->
