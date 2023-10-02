@@ -260,7 +260,18 @@ function startFight() {
   }, 2000);
 }
 
+var isAttacking = false;
 function attack() {
+  if (isAttacking) {
+    console.log('Atac in desfasurare');
+    return;
+  }
+
+  isAttacking = true;
+  setTimeout(function () {
+    isAttacking = false;
+  }, 3000);
+
   // let checkCard = warCards.cardId;
   if (warCards.name.length === 0) {
     console.log('nu ai selectat carte');

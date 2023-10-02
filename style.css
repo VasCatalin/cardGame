@@ -1,7 +1,6 @@
-/* body {
-  background-image: url(./img/105_mushroom_background.png);
-  background-repeat: no-repeat;
-} */
+body {
+  user-select: none;
+}
 
 .game-container {
   display: grid;
@@ -338,4 +337,9 @@
 
 .cards-container-background-none {
   z-index: 10;
+}
+
+.prepare-for-war:hover {
+  scale: 1.4;
+  /* carpeala */
 }
