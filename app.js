@@ -1,5 +1,4 @@
 // variabile GLOBALE
-
 const cards = {};
 let currentCardNumber = 1;
 
@@ -10,9 +9,9 @@ const heroNames = [
   'Sfantul',
   'Motanul',
   'BlackWolf',
-  'Kiru',
-  'Spectrul',
-  'CapitanulNebunie',
+  'Alex',
+  'Polar',
+  'JetAll',
   'ZanaNeagra',
   'ErouldeFier',
   'Luptatorul',
@@ -29,9 +28,9 @@ const heroDescription = [
   'Sfantul este mereu gata sa salveze ziua si sa lupte pentru justitie.',
   'Motanul are control asupra elementului electric si poate emite descarcari puternice de energie.',
   'BlackWolf este cel mai puternic erou din lume, capabil sa mute munții.',
-  'Kiru este un erou nemilos, dedicat eliminarii raului din lume.',
-  'Kamikaze are abilitatea de a deveni invizibil si de a se deplasa in tarâmul spiritelor.',
-  'CapitanulNebunie este cunoscut pentru umorul sau debordant si abilitatile sale haotice.',
+  'Alex este un erou nemilos, dedicat eliminarii raului din lume.',
+  'Polar are abilitatea de a deveni invizibil si de a se deplasa in tarâmul spiritelor.',
+  'JetAll este cunoscut pentru umorul sau debordant si abilitatile sale haotice.',
   'ZanaNeagra este un erou al întunericului, capabil sa invoce forte supranaturale.',
   'ErouldeFier are o armura incredibil de rezistenta si o putere neegalata.',
   'Luptatorul nu renunta niciodata si lupta cu determinare impotriva raului.',
@@ -64,18 +63,6 @@ let packCards = {
   picture: [],
   text: [],
   cardId: [],
-  divID: [],
-};
-
-let handCard = {
-  name: [],
-  card: [],
-  diamond: [],
-  rarity: [],
-  power: [],
-  picture: [],
-  text: [],
-  cardId: '',
 };
 
 let warCards = {
@@ -87,7 +74,6 @@ let warCards = {
   picture: [],
   text: [],
   cardId: [],
-  divID: [],
 };
 
 for (let i = 0; i < 100; i++) {
@@ -169,100 +155,31 @@ function openPack() {
     sectionName = 'cardsContainer';
     let newCard = Math.floor(Math.random() * allGameCards.name.length);
 
-    cardChar = allGameCards.name[newCard];
-    cardCard = allGameCards.card[newCard];
-    cardDiamond = allGameCards.diamond[newCard];
-    cardRarity = allGameCards.rarity[newCard];
-    cardPower = allGameCards.power[newCard];
-    cardPicture = allGameCards.picture[newCard];
-    cardText = allGameCards.text[newCard];
-    cardIdd = allGameCards.cardId[newCard];
-
+    setVariables(allGameCards, newCard);
     openNewPack();
-    packCards.name.push(cardChar);
-    packCards.card.push(cardCard);
-    packCards.diamond.push(cardDiamond);
-    packCards.rarity.push(cardRarity);
-    packCards.power.push(cardPower);
-    packCards.picture.push(cardPicture);
-    packCards.text.push(cardText);
-    packCards.cardId.push(cardIdd);
+    pushCard(packCards);
 
-    allGameCards.name.splice([newCard], 1);
-    allGameCards.card.splice([newCard], 1);
-    allGameCards.diamond.splice([newCard], 1);
-    allGameCards.rarity.splice([newCard], 1);
-    allGameCards.power.splice([newCard], 1);
-    allGameCards.picture.splice([newCard], 1);
-    allGameCards.text.splice([newCard], 1);
-    allGameCards.cardId.splice([newCard], 1);
+    spliceCard(allGameCards, newCard);
 
     cardLocation = 'war-card-box';
     sectionName = 'battleContainer';
     let GetNewCard = Math.floor(Math.random() * allGameCards.name.length);
     newCard = GetNewCard;
 
-    cardChar = allGameCards.name[newCard];
-    cardCard = allGameCards.card[newCard];
-    cardDiamond = allGameCards.diamond[newCard];
-    cardRarity = allGameCards.rarity[newCard];
-    cardPower = allGameCards.power[newCard];
-    cardPicture = allGameCards.picture[newCard];
-    cardText = allGameCards.text[newCard];
-    cardIdd = allGameCards.cardId[newCard];
-
+    setVariables(allGameCards, newCard);
     openNewPack();
-    warCards.name.push(cardChar);
-    warCards.card.push(cardCard);
-    warCards.diamond.push(cardDiamond);
-    warCards.rarity.push(cardRarity);
-    warCards.power.push(cardPower);
-    warCards.picture.push(cardPicture);
-    warCards.text.push(cardText);
-    warCards.cardId.push(cardIdd);
-
-    allGameCards.name.splice([newCard], 1);
-    allGameCards.card.splice([newCard], 1);
-    allGameCards.diamond.splice([newCard], 1);
-    allGameCards.rarity.splice([newCard], 1);
-    allGameCards.power.splice([newCard], 1);
-    allGameCards.picture.splice([newCard], 1);
-    allGameCards.text.splice([newCard], 1);
-    allGameCards.cardId.splice([newCard], 1);
-
+    pushCard(warCards);
+    spliceCard(allGameCards, newCard);
     // openPack END
   } else {
     for (let i = 0; i < 5; i++) {
       sectionName = 'cardsContainer';
       cardLocation = 'card-box';
 
-      cardChar = allGameCards.name[i];
-      cardCard = allGameCards.card[i];
-      cardDiamond = allGameCards.diamond[i];
-      cardRarity = allGameCards.rarity[i];
-      cardPower = allGameCards.power[i];
-      cardPicture = allGameCards.picture[i];
-      cardText = allGameCards.text[i];
-      cardIdd = allGameCards.cardId[i];
-
+      setVariables(allGameCards, [i]);
       openNewPack();
-      packCards.name.push(cardChar);
-      packCards.card.push(cardCard);
-      packCards.diamond.push(cardDiamond);
-      packCards.rarity.push(cardRarity);
-      packCards.power.push(cardPower);
-      packCards.picture.push(cardPicture);
-      packCards.text.push(cardText);
-      packCards.cardId.push(cardIdd);
-
-      allGameCards.name.splice(i, 1);
-      allGameCards.card.splice(i, 1);
-      allGameCards.diamond.splice(i, 1);
-      allGameCards.rarity.splice(i, 1);
-      allGameCards.power.splice(i, 1);
-      allGameCards.picture.splice(i, 1);
-      allGameCards.text.splice(i, 1);
-      allGameCards.cardId.splice(i, 1);
+      pushCard(packCards);
+      spliceCard(allGameCards, i);
     }
     // openPack END
   }
@@ -280,19 +197,8 @@ function removeCardfromWar() {
   }
 }
 
-function removeCardFromBattle() {
-  warCards.name = [];
-  warCards.card = [];
-  warCards.diamond = [];
-  warCards.rarity = [];
-  warCards.power = [];
-  warCards.picture = [];
-  warCards.text = [];
-  warCards.cardId = [];
-}
-
 function prepareForFight() {
-  const prepareCardId = handCard.cardId;
+  const prepareCardId = warCards.cardId;
   let prepareCard = document.getElementById(`${prepareCardId}`);
   let checkClass = document.querySelectorAll('.card-box');
 
@@ -348,106 +254,55 @@ function startFight() {
     }
     setTimeout(function () {
       removeCardfromWar();
-      removeCardFromBattle();
-    }, 2000);
+
+      cleanCard(warCards);
+    }, 1000);
   }, 2000);
 }
 
 function attack() {
-  let checkCard = handCard.cardId;
-  if (
-    checkCard === '' ||
-    packCards.cardId.includes(handCard.cardId) === false
-  ) {
+  // let checkCard = warCards.cardId;
+  if (warCards.name.length === 0) {
     console.log('nu ai selectat carte');
   } else {
     sectionName = 'battleContainer';
-
-    cardChar = handCard.name;
-    cardCard = handCard.card;
-    cardDiamond = handCard.diamond;
-    cardRarity = handCard.rarity;
-    cardPower = handCard.power;
-    cardPicture = handCard.picture;
-    cardText = handCard.text;
-    cardIdd = handCard.cardId;
-
-    const elementToDelete = document.getElementById(cardIdd);
-    if (elementToDelete) {
-      elementToDelete.parentNode.removeChild(elementToDelete);
-    }
-
-    cardLocation = 'card-box';
-    openNewPack();
-    const indexOfcardIdd = packCards.cardId.indexOf(cardIdd);
-    packCards.name.splice(indexOfcardIdd, 1);
-    packCards.card.splice(indexOfcardIdd, 1);
-    packCards.diamond.splice(indexOfcardIdd, 1);
-    packCards.rarity.splice(indexOfcardIdd, 1);
-    packCards.power.splice(indexOfcardIdd, 1);
-    packCards.picture.splice(indexOfcardIdd, 1);
-    packCards.text.splice(indexOfcardIdd, 1);
-    packCards.cardId.splice(indexOfcardIdd, 1);
-
-    handCard.name = '';
-    handCard.card = '';
-    handCard.diamond = '';
-    handCard.rarity = '';
-    handCard.power = '';
-    handCard.picture = '';
-    handCard.text = '';
-    handCard.cardId = '';
-
-    warCards.name.push(cardChar);
-    warCards.card.push(cardCard);
-    warCards.diamond.push(cardDiamond);
-    warCards.rarity.push(cardRarity);
-    warCards.power.push(cardPower);
-    warCards.picture.push(cardPicture);
-    warCards.text.push(cardText);
-    warCards.cardId.push(cardIdd);
-
     openPack();
+    let cardsContainerBackground = document.getElementById(
+      'cardsContainerBackground',
+    );
+    cardsContainerBackground.classList.add('cards-container-background-none');
     startFight();
+
+    setTimeout(function () {
+      cardsContainerBackground.classList.remove(
+        'cards-container-background-none',
+      );
+    }, 3000);
   }
 }
 
 function onCardClick() {
-  getDivId = this.id;
-  console.log(getDivId);
+  getClass = this.classList[0];
+  console.log(getClass);
 
-  handCard.cardId = getDivId;
-  prepareForFight();
-  const index = packCards.cardId.indexOf(`${getDivId}`);
-  if (index !== -1) {
-    handCard.card = packCards.card[index];
-    handCard.diamond = packCards.diamond[index];
-    handCard.name = packCards.name[index];
-    handCard.picture = packCards.picture[index];
-    handCard.power = packCards.power[index];
-    handCard.rarity = packCards.rarity[index];
-    handCard.text = packCards.text[index];
+  if (getClass === 'card-box') {
+    getDivId = this.id;
+    console.log(getDivId);
+    cleanCard(warCards);
+
+    warCards.cardId.push(getDivId);
+    prepareForFight();
+    const index = packCards.cardId.indexOf(`${getDivId}`);
+    if (index !== -1) {
+      warCards.card.push(packCards.card[index]);
+      warCards.diamond.push(packCards.diamond[index]);
+      warCards.name.push(packCards.name[index]);
+      warCards.picture.push(packCards.picture[index]);
+      warCards.power.push(packCards.power[index]);
+      warCards.rarity.push(packCards.rarity[index]);
+      warCards.text.push(packCards.text[index]);
+    }
   }
-
-  // console.log(handCard);
-
-  // animation START
-  // if (this.dataset.selected) {
-  //   this.style.transform = 'translateY(0)';
-  //   delete this.dataset.selected;
-  // } else {
-  //   const selectedCard = document.querySelector(
-  //     `.${cardLocation}[data-selected]`,
-  //   );
-
-  //   if (selectedCard !== null) {
-  //     selectedCard.style.transform = 'translateY(0)';
-  //     delete selectedCard.dataset.selected;
-  //   }
-  //   this.style.transform = 'translateY(-50px)';
-  //   this.dataset.selected = true;
-  // }
-  // animation END
 }
 
 function openNewPack() {
@@ -455,7 +310,7 @@ function openNewPack() {
   // create sectionCardBox START
   const sectionCardBox = document.createElement('section');
   sectionCardBox.id = `${cardIdd}`;
-  sectionCardBox.classList.add(`${cardLocation}`);
+  sectionCardBox.classList.add(`${cardLocation}`, 'get-class');
 
   // create cardBackground START
   const divCardBackground = document.createElement('div');
