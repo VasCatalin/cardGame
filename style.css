@@ -150,30 +150,10 @@ input {
 
 .profile-controls:hover #openPack {
   animation: openPack 1.2s linear infinite;
-  animation: openPackText 1.2s linear infinite;
-}
-
-.profile-controls:hover .profile-controls h3 {
-  animation: openPackText 1.2s linear infinite;
 }
 
 .profile-controls h3 {
   margin: 0;
-}
-
-@keyframes openPackText {
-  0% {
-    scale: 1;
-  }
-
-  50% {
-    scale: 1.2;
-    text-shadow: 0 0 15px var(--lost);
-  }
-
-  100% {
-    scale: 1;
-  }
 }
 
 @keyframes openPack {
@@ -210,25 +190,120 @@ input {
 }
 /* welcome page END */
 
-/* war-score START */
-.game-container {
+/* game-arena START */
+.game-arena {
+  position: absolute;
+  top: -8px;
+  width: 100vw;
+  height: 100vh;
+
+  background-image: url(./img/bg.jpg);
+  background-size: cover;
+
+  background-repeat: no-repeat;
+  background-position: center center;
+  z-index: 10;
+
+  /* display: none; */
+}
+
+.game-box-arena {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+
+  height: 100%;
+  margin: 0 auto;
 }
 
-.warscore {
-  position: relative;
-  text-align: center;
-  top: 90px;
+.game-box-arena-frame {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
+  backdrop-filter: blur(5px);
+  box-shadow: 0 0 35px var(--white);
+  border-radius: 20px;
+  width: 1280px;
+  height: 720px;
+}
+
+.warscore-frame img {
+  position: absolute;
+  top: 0;
+  width: 600px;
+  left: calc(50% - 300px);
+}
+
+.warscore-text {
+  position: absolute;
+  text-transform: uppercase;
   color: var(--white);
-  font-size: 50px;
-  font-weight: bold;
-  z-index: 1;
+  text-shadow: 0 0 5px var(--black);
+  top: 55px;
+  left: calc(50% - 50px);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+.warscore-text-players {
+  font-size: 12px;
+}
+
+#warNameAway {
+  position: absolute;
+  left: 164px;
+  top: 18px;
+  margin: 0;
+}
+
+#warNameHome {
+  position: absolute;
+  right: 172px;
+  top: 18px;
+  margin: 0;
+}
+
+.warscore-text-counter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+
+  font-size: 45px;
+}
+
+#warScoreAway {
+  color: var(--lost);
+}
+
+#warScoreHome {
+  color: var(--win);
+}
+
+.profile {
+  position: absolute;
+  top: 0;
+  z-index: -1;
+}
+
+#warProfileAway {
+  position: absolute;
+  left: 250px;
+  width: 150px;
+  top: 0;
+}
+
+#warProfileHome {
+  position: absolute;
+  right: 250px;
+  width: 150px;
+  top: 0;
+}
+
+/*
 #warScoreHome {
   color: var(--win);
 }
@@ -245,7 +320,6 @@ input {
 }
 
 .war-score h1 {
-  position: absolute;
   text-transform: uppercase;
   text-shadow: 2px 2px 5px rgb(0, 0, 0);
 
@@ -254,7 +328,7 @@ input {
 }
 
 #warNameHome {
-  left: calc(50% - 330px);
+  left: calc(0);
 }
 
 #warNameAway {
@@ -269,11 +343,11 @@ input {
 }
 
 .war-profile-home {
-  left: calc(50% - 495px);
+  left: calc(50% - 640);
 }
 
 .war-profile-away {
-  right: calc(50% - 495px);
+  right: calc(50% - 640);
 }
 
 @media screen and (max-width: 999px) {
@@ -357,4 +431,4 @@ input {
     right: calc(50% - 180px);
   }
 }
-/* war-score END */
+war-score END */
