@@ -12,7 +12,7 @@ const heroNames = [
   'Alex',
   'Polar',
   'JetAll',
-  'ZanaNeagra',
+  'Saolin',
   'ErouldeFier',
   'Luptatorul',
   'EroinaElla',

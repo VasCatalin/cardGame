@@ -1,345 +1,360 @@
 body {
   user-select: none;
+
+  /* fonts */
+  font-family: 'Young Serif', serif;
+
+  /* colors */
+  --white: #fff;
+  --black: #000;
+  --win: #58a4f0;
+  --lost: #be3a7c;
 }
 
-.game-container {
-  display: grid;
-  grid-template-rows: 20px 100px 100px 560px 300px 20px;
-  grid-template-columns: 50px 1350px 50px;
-
-  height: 1100px;
-  width: 1350px;
-
-  margin: 0 auto;
-  font-family: 'Skranji', cursive;
-}
-
-.cards-container {
-  display: grid;
+.content {
   position: relative;
-  gap: 80px;
+}
 
+/* welcome page START */
+.welcome {
+  position: absolute;
+  top: -8px;
+  width: 100vw;
+  height: 100vh;
+
+  background-image: url(./img/bg.jpg);
+  background-size: cover;
+
+  background-repeat: no-repeat;
+  background-position: center center;
+  z-index: 10;
+
+  /* display: none; */
+}
+
+.welcome-animation {
+  animation: fade-out 2s forwards;
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.welcome-box {
   display: flex;
   justify-content: center;
   align-items: center;
 
-  grid-row: 5 / 6;
-  grid-column: 2 / 3;
+  height: 100%;
+  margin: 0 auto;
 }
 
-.card-img {
-  width: 200px;
-}
-
-/* cardbox */
-.war-card-box {
-  position: absolute;
-  cursor: pointer;
-
-  scale: 1.4;
-  right: 204px;
-  top: 138px;
-
-  animation: right-to-left 1s ease-in;
-}
-
-@keyframes right-to-left {
-  0% {
-    transform: translateX(400px);
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
-.card-box {
-  position: relative;
-  max-width: 145px;
-  cursor: pointer;
-  transition: 0.5s;
-  animation: fade 1s ease-in;
-}
-
-@keyframes fade {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
-.card-box:hover {
-  scale: 1.1;
-}
-
-/* card-top */
-.card-power {
-  position: absolute;
-  top: -20px;
-  left: 45px;
+.welcome-box-frame {
   display: flex;
   justify-content: center;
+  align-items: center;
+
+  backdrop-filter: blur(5px);
+  box-shadow: 0 0 35px var(--white);
+  border-radius: 20px;
+  width: 850px;
+  height: 550px;
 }
 
-/* card power */
-.card-power-img {
-  position: absolute;
-  width: 110px;
-  left: 20%;
-  top: -16px;
+.welcome-profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+
+  background-image: url(./img/login-bg.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+
+  width: 850px;
+  height: 550px;
 }
 
-.card-power h1 {
-  position: absolute;
-  color: aliceblue;
-  font-size: 22px;
-  left: 5px;
-  top: -32px;
-  width: 100px;
+.profile-text {
   text-align: center;
 }
-/* card power END */
 
-/* card-name */
-.card-name {
-  top: -24px;
-  left: -14px;
+.profile-text h1 {
+  font-size: 50px;
+  margin: 0;
+  color: #e9e5d9;
+  text-shadow: 0 0 15px var(--black);
+}
+
+.profile-text h3 {
+  margin: 0;
+}
+
+.profile-picture {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#profilePicture {
+  width: 150px;
+  cursor: pointer;
+  animation: fade-in 1s forwards;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+#prevPicture:hover,
+#nextPicture:hover {
+  scale: 1.2;
+  cursor: pointer;
+}
+
+#openPack {
+  width: 60px;
+  margin-top: 10px;
+  cursor: pointer;
+
+  border-radius: 50%;
+  box-shadow: 0 0 5px var(--black);
+}
+
+input {
+  background: transparent;
   text-align: center;
+  border: 1px solid transparent;
+  box-shadow: 0 0 35px var(--white);
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 10px;
 }
 
-.card-name h1 {
-  position: absolute;
-  left: 30%;
-  top: -10px;
-  font-size: 14px;
-  rotate: 6deg;
-  color: aliceblue;
-  text-shadow: 2px 2px 5px rgb(0, 0, 0);
-  z-index: 2;
-  width: 100px;
+.profile-controls {
+  cursor: pointer;
 }
 
-.card-name img {
-  position: absolute;
-  width: 250px;
-  top: -34px;
-  left: -24px;
-  z-index: 2;
+.profile-controls:hover #openPack {
+  animation: openPack 1.2s linear infinite;
+  animation: openPackText 1.2s linear infinite;
 }
-/* card-name END */
-/* card-hero */
-.hero-img-frame {
-  width: 180px;
-  position: absolute;
-  top: 8px;
-  left: 7%;
+
+.profile-controls:hover .profile-controls h3 {
+  animation: openPackText 1.2s linear infinite;
+}
+
+.profile-controls h3 {
+  margin: 0;
+}
+
+@keyframes openPackText {
+  0% {
+    scale: 1;
+  }
+
+  50% {
+    scale: 1.2;
+    text-shadow: 0 0 15px var(--lost);
+  }
+
+  100% {
+    scale: 1;
+  }
+}
+
+@keyframes openPack {
+  0% {
+    scale: 1;
+  }
+
+  50% {
+    scale: 1.2;
+    box-shadow: 0 0 15px var(--lost);
+  }
+
+  100% {
+    scale: 1;
+  }
+}
+
+@media screen and (max-width: 899px) {
+  .welcome-profile {
+    background-image: url(./img/login-bg.png);
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    background-size: 300px;
+    transform: translateY(-50px);
+    margin-top: 40px;
+
+    width: 300px;
+    height: 500px;
+  }
+
+  .profile-text h1 {
+    font-size: 30px;
+  }
+}
+/* welcome page END */
+
+/* war-score START */
+.game-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.warscore {
+  position: relative;
+  text-align: center;
+  top: 90px;
+
+  color: var(--white);
+  font-size: 50px;
+  font-weight: bold;
   z-index: 1;
 }
 
-.hero-img {
-  position: absolute;
-  border-radius: 50%;
-  width: 144px;
-  left: 28px;
-  top: 28px;
-}
-/* card-hero END */
-/* card-hero-details */
-.card-hero-details {
-  position: relative;
+#warScoreHome {
+  color: var(--win);
 }
 
-.card-hero-details img:first-child {
-  position: absolute;
-  width: 35px;
-  top: -150px;
-  left: 82px;
-  z-index: 3;
-}
-
-.card-hero-details img {
-  z-index: 2;
-  width: 212px;
-  position: absolute;
-  bottom: -1px;
-  left: -4%;
-}
-
-.card-hero-details p {
-  text-align: center;
-  position: absolute;
-  top: -123px;
-  left: 37px;
-  width: 125px;
-  z-index: 2;
-  font-size: 10px;
-  color: aliceblue;
-}
-/* card-hero-details END*/
-/* card-hero-footer */
-.card-hero-footer {
-  display: flex;
-  justify-content: center;
-}
-
-.card-hero-footer img {
-  position: absolute;
-}
-
-/* .card-hero-footer img:first-child {
-  width: 281px;
-  bottom: -33px;
-  left: -40px;
-} */
-
-.card-hero-footer img:nth-child(1) {
-  width: 160px;
-  bottom: -20px;
-  left: 20px;
-}
-
-.card-hero-footer h1 {
-  position: absolute;
-  color: aliceblue;
-  font-size: 24px;
-  bottom: 1px;
-  text-shadow: 2px 2px 5px rgb(0, 0, 0);
-}
-
-#detail1 {
-  left: 15px;
-}
-
-#detail2 {
-  left: 175px;
-}
-
-.card-hero-footer h3 {
-  position: absolute;
-  color: aliceblue;
-  font-size: 14px;
-  bottom: 1px;
-  margin-left: 40%;
-  text-shadow: 2px 2px 5px rgb(0, 0, 0);
-}
-
-.battle-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 100px;
-
-  margin-top: 100px;
-}
-
-.battle-container {
-  position: relative;
-  grid-row: 3 / span 1;
-  grid-column: 2 / span 1;
-
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 100px 100px 100px;
-  justify-items: center;
-}
-
-.battle-container-img {
-  grid-column: 3 / span 1;
-  grid-row: 2 / span 1;
-}
-
-.battle-container-img img {
-  width: 100px;
-}
-
-.battle-container > .card-box {
-  scale: 1.4;
-
-  grid-column: 2 / span 1;
-  grid-row: 2 / span 1;
-}
-
-.prepare-for-war {
-  scale: 1.4;
-  position: absolute;
-
-  left: -86px;
-  top: -422px;
-
-  transition: 1s;
-  transform: translateX(200px);
-}
-
-.war-score {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 40px;
-
-  grid-column: 2 / span 1;
-  grid-row: 2 / span 1;
-
-  align-self: center;
-  font-size: 100px;
+#warScoreAway {
+  color: var(--lost);
 }
 
 .war-score img {
-  width: 50px;
-}
-
-.war-score-home {
-  color: blue;
-}
-
-.war-score-away {
-  color: red;
-}
-
-.war-status {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 40px;
-
-  grid-column: 2 / span 1;
-  grid-row: 3 / span 1;
-
-  align-self: center;
-  font-size: 100px;
-}
-
-.war-status h1 {
-  font-size: 50px;
-  text-transform: uppercase;
-  font-family: 'Nosifer', cursive;
-}
-
-.cards-container-background {
-  width: 100%;
-  height: 350px;
-  bottom: 0px;
-  left: 25px;
-  background: rgb(206, 203, 203);
   position: absolute;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 100px;
-  animation: fade 0.2s ease-in;
-  cursor: pointer;
-  user-select: none;
+  width: 800px;
+  top: 10px;
+  left: calc(50% - 400px);
 }
 
-.cards-container-background-none {
-  z-index: 10;
+.war-score h1 {
+  position: absolute;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 5px rgb(0, 0, 0);
+
+  top: 20px;
+  font-size: 30px;
 }
 
-.prepare-for-war:hover {
-  scale: 1.4;
-  /* carpeala */
+#warNameHome {
+  left: calc(50% - 330px);
 }
+
+#warNameAway {
+  right: calc(50% - 315px);
+}
+
+.profile img {
+  width: 150px;
+  position: absolute;
+  top: 20px;
+  z-index: -1;
+}
+
+.war-profile-home {
+  left: calc(50% - 495px);
+}
+
+.war-profile-away {
+  right: calc(50% - 495px);
+}
+
+@media screen and (max-width: 999px) {
+  .war-score img {
+    width: 500px;
+    left: calc(50% - 250px);
+    top: 15px;
+  }
+
+  .warscore {
+    font-size: 30px;
+    font-weight: bold;
+    z-index: 1;
+    top: 65px;
+  }
+
+  .war-score h1 {
+    top: 10px;
+    font-size: 20px;
+  }
+
+  #warNameHome {
+    left: calc(50% - 220px);
+  }
+
+  #warNameAway {
+    right: calc(50% - 218px);
+  }
+
+  .profile img {
+    width: 100px;
+    top: 15px;
+  }
+
+  .war-profile-home {
+    left: calc(50% - 300px);
+  }
+
+  .war-profile-away {
+    right: calc(50% - 300px);
+  }
+}
+
+@media screen and (max-width: 599px) {
+  .war-score img {
+    width: 350px;
+    left: calc(50% - 175px);
+    top: 15px;
+  }
+
+  .warscore {
+    font-size: 20px;
+    font-weight: bold;
+    z-index: 1;
+    top: 50px;
+  }
+
+  .war-score h1 {
+    top: 5px;
+    font-size: 16px;
+  }
+
+  #warNameHome {
+    left: calc(50% - 155px);
+  }
+
+  #warNameAway {
+    right: calc(50% - 153px);
+  }
+
+  .profile img {
+    width: 50px;
+    top: 15px;
+  }
+
+  .war-profile-home {
+    left: calc(50% - 180px);
+  }
+
+  .war-profile-away {
+    right: calc(50% - 180px);
+  }
+}
+/* war-score END */
