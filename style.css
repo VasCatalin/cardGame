@@ -19,8 +19,6 @@ body {
 .welcome {
   position: absolute;
   top: -8px;
-  width: 100vw;
-  height: 100vh;
 
   background-image: url(./img/bg.jpg);
   background-size: cover;
@@ -29,7 +27,7 @@ body {
   background-position: center center;
   z-index: 10;
 
-  /* display: none; */
+  /* display: none; nu aici*/
 }
 
 .welcome-animation {
@@ -204,7 +202,7 @@ input {
   background-position: center center;
   z-index: 10;
 
-  display: none;
+  /* display: none; */
 }
 
 .game-box-arena {
@@ -225,7 +223,7 @@ input {
   box-shadow: 0 0 35px var(--white);
   border-radius: 20px;
   width: 1280px;
-  height: 720px;
+  height: 820px;
 }
 
 .warscore-frame img {
@@ -240,8 +238,8 @@ input {
   text-transform: uppercase;
   color: var(--white);
   text-shadow: 0 0 5px var(--black);
-  top: 55px;
-  left: calc(50% - 50px);
+  top: 53px;
+  left: calc(50% - 42px);
 
   display: flex;
   justify-content: center;
@@ -254,16 +252,35 @@ input {
 
 #warNameAway {
   position: absolute;
-  left: 164px;
-  top: 18px;
+  left: 160px;
+  top: 20px;
   margin: 0;
 }
 
 #warNameHome {
   position: absolute;
-  right: 172px;
-  top: 18px;
+  right: 160px;
+  top: 20px;
   margin: 0;
+}
+
+.war-score-home {
+  position: absolute;
+  left: 0px;
+  top: 0;
+}
+
+.war-score-away {
+  position: absolute;
+  right: 0px;
+  top: 0;
+}
+
+.warscore-text-counter h1 {
+  position: absolute;
+  font-size: 20px;
+  right: 35px;
+  top: 6px;
 }
 
 .warscore-text-counter {
@@ -303,132 +320,297 @@ input {
   top: 0;
 }
 
-/*
-#warScoreHome {
-  color: var(--win);
+@media screen and (max-width: 899px) {
+  .warscore-frame img {
+    position: absolute;
+    top: 25px;
+    width: 300px;
+    left: calc(50% - 150px);
+  }
+
+  #warNameAway {
+    position: absolute;
+    left: 106px;
+    top: 6px;
+    margin: 0;
+  }
+
+  #warNameHome {
+    position: absolute;
+    right: 90px;
+    top: 6px;
+    margin: 0;
+  }
+
+  .warscore-text-players {
+    font-size: 6px;
+  }
+
+  .warscore-text-counter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin-left: 28px;
+    font-size: 18px;
+  }
+
+  #warProfileAway {
+    left: 130px;
+    width: 40px;
+    top: 35px;
+  }
+
+  #warProfileHome {
+    position: absolute;
+    right: 130px;
+    width: 40px;
+    top: 35px;
+  }
+}
+/* war-score END */
+/* card-box START */
+.cards-container {
+  position: relative;
+  z-index: 10;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+
+  /* backdrop-filter: blur(5px); */
+  border-radius: 20px;
+  width: 1000px;
+  height: 300px;
+
+  bottom: -730px;
+  margin: 0 auto;
 }
 
-#warScoreAway {
-  color: var(--lost);
+.card-box {
+  position: relative;
+  text-align: center;
+  transition: 0.5s;
+  cursor: pointer;
+  animation: fade 1s ease-in;
 }
 
-.war-score img {
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.card-background img {
+  width: 170px;
+}
+/* ----------------------------------card-top */
+.card-top {
+  text-align: center;
+}
+/* ----------------------------------card-power START*/
+.card-power {
   position: absolute;
-  width: 800px;
-  top: 10px;
-  left: calc(50% - 400px);
+  top: -35px;
+  left: calc(50% - 90px);
 }
-
-.war-score h1 {
-  text-transform: uppercase;
-  text-shadow: 2px 2px 5px rgb(0, 0, 0);
-
-  top: 20px;
-  font-size: 30px;
+.card-power img {
+  position: absolute;
+  width: 89px;
+  top: 0;
+  left: 45px;
 }
+.card-power h1 {
+  color: var(--white);
+  text-shadow: 0 2px 5px var(--black);
+  position: relative;
 
-#warNameHome {
-  left: calc(0);
+  top: 4px;
+  left: 64px;
+  margin: 0;
+
+  z-index: 11;
 }
-
-#warNameAway {
-  right: calc(50% - 315px);
+/* ----------------------------------card-power END */
+/* ----------------------------------card-name START */
+.card-name {
+  position: absolute;
+  top: 0;
+  left: calc(50% - 100px);
+  z-index: 2;
 }
-
-.profile img {
+.card-name img {
+  position: relative;
+  width: 220px;
+  left: calc(50% - 120px);
+  top: -34px;
+}
+.card-name h1 {
+  position: relative;
+  width: 220px;
+  left: calc(50% - 120px);
+  top: -108px;
+  margin: 0;
+  transform: rotate(9deg);
+  text-shadow: 0 2px 5px var(--black);
+  font-size: 14px;
+}
+/* ----------------------------------card-name END*/
+/* ----------------------------------card-hero START*/
+.card-hero {
+  position: absolute;
+}
+.card-hero img {
+  position: absolute;
+}
+.hero-img {
+  border-radius: 50%;
+  width: 118px;
+  top: -225px;
+  left: 27px;
+}
+.hero-img-frame {
   width: 150px;
+  top: -243px;
+  left: 10px;
+}
+/* ----------------------------------card-hero END*/
+/* ----------------------------------card-hero-details START*/
+.card-hero-details img {
   position: absolute;
-  top: 20px;
-  z-index: -1;
 }
 
-.war-profile-home {
-  left: calc(50% - 640);
+.rarity-diamond {
+  width: 190px;
+  top: 100px;
+  left: -10px;
 }
 
-.war-profile-away {
-  right: calc(50% - 640);
+.diamond-hero-img {
+  width: 30px;
+  left: 70px;
+  top: 118px;
+  z-index: 2;
 }
 
-@media screen and (max-width: 999px) {
-  .war-score img {
-    width: 500px;
-    left: calc(50% - 250px);
-    top: 15px;
+.card-hero-footer img {
+  width: 50px;
+}
+/* ----------------------------------card-hero-details START*/
+.card-hero-details p {
+  position: absolute;
+  width: 105px;
+  font-size: 10px;
+  top: 140px;
+  left: 32px;
+  color: var(--white);
+}
+
+.card-hero-footer img {
+  position: relative;
+  width: 100px;
+  top: -40px;
+}
+.card-hero-footer h3 {
+  position: relative;
+  top: -88px;
+  font-size: 8px;
+}
+
+/* card-box END */
+.battle-container-img img {
+  width: 80px;
+  cursor: pointer;
+  transition: 0.3s;
+  padding-top: 10px;
+}
+
+.battle-container-img:hover img {
+  scale: 1.1;
+}
+
+.battle-container > .card-box {
+  scale: 1.1;
+
+  grid-column: 2 / span 1;
+  grid-row: 2 / span 1;
+}
+
+.prepare-for-war {
+  scale: 1.1;
+  position: absolute;
+
+  left: 10px;
+  top: -300px;
+
+  transition: 1s;
+  transform: translateX(200px);
+}
+
+.card-box:hover {
+  scale: 1.1;
+}
+
+/* cardbox */
+.war-card-box {
+  position: absolute;
+  cursor: pointer;
+  z-index: 20;
+
+  scale: 1.1;
+  right: calc(50% - 300px);
+  top: 453px;
+
+  animation: right-to-left 1s ease-in;
+}
+
+@keyframes right-to-left {
+  0% {
+    transform: translateX(200px);
+    opacity: 0;
   }
 
-  .warscore {
-    font-size: 30px;
-    font-weight: bold;
-    z-index: 1;
-    top: 65px;
-  }
-
-  .war-score h1 {
-    top: 10px;
-    font-size: 20px;
-  }
-
-  #warNameHome {
-    left: calc(50% - 220px);
-  }
-
-  #warNameAway {
-    right: calc(50% - 218px);
-  }
-
-  .profile img {
-    width: 100px;
-    top: 15px;
-  }
-
-  .war-profile-home {
-    left: calc(50% - 300px);
-  }
-
-  .war-profile-away {
-    right: calc(50% - 300px);
+  100% {
+    opacity: 1;
   }
 }
 
-@media screen and (max-width: 599px) {
-  .war-score img {
-    width: 350px;
-    left: calc(50% - 175px);
-    top: 15px;
-  }
-
-  .warscore {
-    font-size: 20px;
-    font-weight: bold;
-    z-index: 1;
-    top: 50px;
-  }
-
-  .war-score h1 {
-    top: 5px;
-    font-size: 16px;
-  }
-
-  #warNameHome {
-    left: calc(50% - 155px);
-  }
-
-  #warNameAway {
-    right: calc(50% - 153px);
-  }
-
-  .profile img {
-    width: 50px;
-    top: 15px;
-  }
-
-  .war-profile-home {
-    left: calc(50% - 180px);
-  }
-
-  .war-profile-away {
-    right: calc(50% - 180px);
-  }
+.battle-container-img {
+  position: relative;
+  top: 75px;
+  left: -6px;
 }
-war-score END */
+
+.war-status {
+  text-transform: uppercase;
+  position: absolute;
+  font-size: 60px;
+  text-align: center;
+  z-index: 20;
+  text-shadow: 0 0 15px var(--black);
+
+  bottom: 30px;
+  /* right: 90px; */
+}
+
+.war-status h1 {
+  margin: 0;
+}
+
+.war-status h2 {
+  font-size: 30px;
+  margin: 0;
+}
+
+.d-none {
+  display: none;
+}
+
+.fade-in {
+  animation: fade 1s ease-in;
+}

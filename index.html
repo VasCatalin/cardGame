@@ -32,162 +32,165 @@
   <div class="content">
     <!-- <button onclick="openPack()">Deschide Pachet</button> -->
 
-    <div class="game-container container">
-      <div
-        class="welcome"
-        id="welcome"
-      >
-        <div class="welcome-box container">
-          <div class="welcome-box-frame">
-            <div class="welcome-profile">
-              <div class="profile-text">
-                <h1>Hello Champion!</h1>
-                <h3>~ create your avatar~</h3>
-              </div>
-              <div class="profile-picture">
-                <img
-                  id="prevPicture"
-                  src="./img/left.png"
-                  alt=""
-                >
-                <img
-                  id="profilePicture"
-                  src="./img/profile/avatar-1.png"
-                  alt="Poza de profil"
-                >
-                <img
-                  id="nextPicture"
-                  src="./img/right.png"
-                  alt=""
-                >
-              </div>
-              <input
-                maxlength="8"
-                placeholder="Enter your Name..."
-                type="text"
-                name="profile-name"
-                id="profileName"
-              >
-              <!-- <div class="profile-controls">
-                <img
-                  onclick="openPack()"
-                  id="openPack"
-                  src="./img/start-game.png"
-                  alt="Start Joc"
-                >
-                <h3>Fight!</h3>
-              </div> -->
+    <div
+      class="welcome"
+      id="welcome"
+    >
+      <div class="welcome-box container">
+        <div class="welcome-box-frame">
+          <div class="welcome-profile">
+            <div class="profile-text">
+              <h1>Hello Champion!</h1>
+              <h3>~ create your avatar~</h3>
             </div>
-
-
+            <div class="profile-picture">
+              <img
+                id="prevPicture"
+                src="./img/left.png"
+                alt=""
+              >
+              <img
+                id="profilePicture"
+                src="./img/profile/avatar-1.png"
+                alt="Poza de profil"
+              >
+              <img
+                id="nextPicture"
+                src="./img/right.png"
+                alt=""
+              >
+            </div>
+            <input
+              maxlength="8"
+              placeholder="Enter your Name..."
+              type="text"
+              name="profile-name"
+              id="profileName"
+            >
+            <div class="profile-controls">
+              <img
+                onclick="openPack()"
+                id="openPack"
+                src="./img/start-game.png"
+                alt="Start Joc"
+              >
+              <h3>Fight!</h3>
+            </div>
           </div>
         </div>
-
       </div>
 
-      <div
-        class="game-arena"
-        id="gameArena"
-      >
-        <div class="game-box-arena container">
-          <div class="game-box-arena-frame">
-            <div class="game-box-arena-score">
-              <div
-                class="warscore"
-                id="warScore"
-              >
-                <div class="warscore-frame">
-                  <img
-                    src="./designs/scoreboard.png"
-                    alt="war-img"
-                  >
+    </div>
+
+    <div
+      class="game-arena"
+      id="gameArena"
+    >
+      <div class="game-box-arena container">
+        <div class="game-box-arena-frame">
+          <div class="game-box-arena-score">
+            <div
+              class="warscore"
+              id="warScore"
+            >
+              <div class="warscore-frame">
+                <img
+                  src="./designs/scoreboard.png"
+                  alt="war-img"
+                >
+              </div>
+              <div class="warscore-text">
+                <div class="warscore-text-players">
+                  <h1 id="warNameHome">Username</h1>
+                  <h1 id="warNameAway">Computer</h1>
                 </div>
-                <div class="warscore-text">
-                  <div class="warscore-text-players">
-                    <h1 id="warNameHome">Username</h1>
-                    <h1 id="warNameAway">Computer</h1>
-                  </div>
-
-                  <div class="warscore-text-counter">
-                    <span
-                      class="war-score-home"
-                      id="warScoreHome"
-                    >9
-                    </span>
-                    <span>-</span>
-                    <span
-                      class="war-score-away"
-                      id="warScoreAway"
-                    >10
-                    </span>
-                  </div>
-
-                </div>
-
                 <div
-                  class="profile"
-                  id="profile"
+                  class="battle-container-img"
+                  id="battleContainerImg"
                 >
                   <img
-                    src="./img/profile/avatar-3.png"
+                    src="./img/start-game.png"
                     alt=""
-                    class="war-profile-home"
-                    id="warProfileHome"
-                  >
-
-                  <img
-                    src="./img/profile/avatar-1.png"
-                    alt=""
-                    class="war-profile-away"
-                    id="warProfileAway"
+                    onclick="attack()"
                   >
                 </div>
+                <div class="warscore-text-counter">
+                  <span
+                    class="war-score-home"
+                    id="warScoreHome"
+                  >0
+                  </span>
+                  <h1>-</h1>
+                  <span
+                    class="war-score-away"
+                    id="warScoreAway"
+                  >0
+                  </span>
+                </div>
               </div>
-
-
-
               <div
-                class="war-status"
-                id="warStatus"
+                class="profile"
+                id="profile"
               >
-                <h1 id="win"></h1>
+                <img
+                  src="./img/profile/avatar-3.png"
+                  alt=""
+                  class="war-profile-home"
+                  id="warProfileHome"
+                >
+
+                <img
+                  src="./img/profile/avatar-1.png"
+                  alt=""
+                  class="war-profile-away"
+                  id="warProfileAway"
+                >
               </div>
             </div>
           </div>
         </div>
-
-
       </div>
+    </div>
 
-
-
-
+    <div
+      id="battleContainer"
+      class="battle-container"
+    >
       <div
-        id="battleContainer"
-        class="battle-container"
+        class="battle-container-img"
+        id="battleContainerImg"
       >
-        <div
-          class="battle-container-img"
-          id="battleContainerImg"
+        <img
+          src=""
+          alt=""
+          onclick="attack()"
         >
-          <img
-            src=""
-            alt=""
-            onclick="attack()"
-          >
-        </div>
       </div>
+    </div>
 
-
+    <div
+      id="cardsContainer"
+      class="cards-container"
+    >
       <div
-        id="cardsContainer"
-        class="cards-container"
+        class="war-status"
+        id="warStatus"
       >
-        <div
-          class="cards-container-background"
-          id="cardsContainerBackground"
+        <h2
+          class="win-name"
+          id="winName"
         >
-        </div>
+        </h2>
+        <img
+          class="win-img"
+          id="winImg"
+        >
+        <h1 id="win"></h1>
+      </div>
+      <div
+        class="cards-container-background"
+        id="cardsContainerBackground"
+      >
       </div>
     </div>
     <script src="functions.js"></script>

@@ -218,6 +218,7 @@ function startFight() {
 
   let homeScore = Number(homeScoreMessage.innerText);
   let awayScore = Number(awayScoreMessage.innerText);
+
   switch (true) {
     case homePower < awayPower:
       awayScore += 1;
@@ -231,30 +232,77 @@ function startFight() {
       console.log('Egalitate');
   }
 
+  let cardsToHide = document.querySelectorAll('.card-box');
+  cardsToHide.forEach(function (cardToHide) {
+    if (cardToHide.classList.contains('prepare-for-war') === false) {
+      cardToHide.classList.add('d-none');
+    }
+
+    if (
+      (homeScore !== 2 && awayScore < 2) ||
+      (awayScore !== 2 && homeScore < 2)
+    ) {
+      setTimeout(function () {
+        cardToHide.classList.remove('d-none');
+      }, 3000);
+    }
+  });
+
   setTimeout(function () {
     homeScoreMessage.innerText = homeScore;
     awayScoreMessage.innerText = awayScore;
 
     let win = document.getElementById('win');
+    let winName = document.getElementById('winName');
+    let winImg = document.getElementById('winImg');
+    let winStatus = document.getElementById('warStatus');
 
     switch (true) {
-      case homeScore === 10:
-        win.innerText = 'win!';
-        homeScoreMessage.innerText = 0;
-        awayScoreMessage.innerText = 0;
+      case homeScore === 2:
+        if (homeScoreMessage !== 2) {
+          homeScoreMessage.innerText = homeScoreMessage.innerText;
+          awayScoreMessage.innerText = awayScoreMessage.innerText;
+          win.style = 'color: var(--win)';
+
+          setTimeout(function () {
+            win.innerText = ` ~Winner!~ `;
+            winName.innerText = 'Username';
+            winImg.src = './img/profile/avatar-3.png';
+            winImg.alt = 'Winner Picture';
+            winStatus.classList.add('fade-in');
+            winStatus.style = 'right: 105px;';
+          }, 1000);
+        } else {
+          homeScoreMessage.innerText = 0;
+          awayScoreMessage.innerText = 0;
+          // win.innerText = 'Round Won!';
+        }
         break;
 
-      case awayScore === 10:
-        win.innerText = 'Lost!';
-        homeScoreMessage.innerText = 0;
-        awayScoreMessage.innerText = 0;
+      case awayScore === 2:
+        if (homeScoreMessage !== 2) {
+          homeScoreMessage.innerText = homeScoreMessage.innerText;
+          awayScoreMessage.innerText = awayScoreMessage.innerText;
+          win.style = 'color: var(--lost)';
+          setTimeout(function () {
+            winName.innerText = 'Username';
+            win.innerText = '~Defeated!~';
+            winImg.src = './img/profile/avatar-3.png';
+            winImg.alt = 'Winner Picture';
+            winStatus.classList.add('fade-in');
+            winStatus.style = 'right: 43px;';
+          }, 1000);
+        } else {
+          homeScoreMessage.innerText = 0;
+          awayScoreMessage.innerText = 0;
+          // win.innerText = 'Round Lost!';
+        }
         break;
-
       default:
     }
+
     setTimeout(function () {
       removeCardfromWar();
-
       cleanCard(warCards);
     }, 1000);
   }, 2000);
@@ -295,6 +343,9 @@ function attack() {
 function onCardClick() {
   getClass = this.classList[0];
   console.log(getClass);
+
+  attackAnimation = document.getElementById('battleContainerImg');
+  attackAnimation.classList.add('attack-animation');
 
   if (getClass === 'card-box') {
     getDivId = this.id;
@@ -429,13 +480,15 @@ function openNewPack() {
   const rarityDiamond = document.createElement('img');
   rarityDiamond.src = `./img/rarity/${cardDiamond}.png`;
   rarityDiamond.alt = 'Poza cu Supererou';
-  rarityDiamond.className = 'hero-img';
+  rarityDiamond.classList.add('diamond-hero-img');
   cardRarityDiamond.appendChild(rarityDiamond);
 
   cardHeroDetails.appendChild(cardRarityDiamond);
   // create cardRarityDiamond END
   // create cardRarityDiamondbg START
   const cardRarityDiamondbg = document.createElement('img');
+  cardRarityDiamondbg.classList.add('rarity-diamond');
+  cardRarityDiamondbg.id = 'rarityDiamond';
   cardRarityDiamondbg.src = './img/frame/minion (2).png';
   cardHeroDetails.appendChild(cardRarityDiamondbg);
   // create cardRarityDiamondbg END
