@@ -337,7 +337,7 @@ function startFight() {
             winImg.src = `./img/profile/avatar-${profilePicture}.png`;
             winImg.alt = 'Winner Picture';
             winStatus.classList.add('fade-in');
-            // winStatus.style = 'right: 300px;';
+            winStatus.style = 'right: 300px;';
           }, 1000);
         } else {
           homeScoreMessage.innerText = 0;
@@ -356,7 +356,7 @@ function startFight() {
             winImg.src = `./img/profile/avatar-${profilePicture}.png`;
             winImg.alt = 'Defeated Picture';
             winStatus.classList.add('fade-in');
-            // winStatus.style = 'right: 300px;';
+            winStatus.style = 'right: 265px;';
           }, 1000);
         } else {
           homeScoreMessage.innerText = 0;
