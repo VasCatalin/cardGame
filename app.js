@@ -76,65 +76,68 @@ let warCards = {
   cardId: [],
 };
 
-for (let i = 0; i < 100; i++) {
-  function generateRandomID() {
-    const letters = 'abcdefghijklmnopqrstuvwxyz';
-    const digits = '0123456789';
-    let randomID = '';
+function newGame() {
+  for (let i = 0; i < 100; i++) {
+    function generateRandomID() {
+      const letters = 'abcdefghijklmnopqrstuvwxyz';
+      const digits = '0123456789';
+      let randomID = '';
 
-    for (let i = 0; i < 5; i++) {
-      const randomLetter = letters[Math.floor(Math.random() * letters.length)];
-      randomID += randomLetter;
+      for (let i = 0; i < 5; i++) {
+        const randomLetter =
+          letters[Math.floor(Math.random() * letters.length)];
+        randomID += randomLetter;
+      }
+
+      for (let i = 0; i < 5; i++) {
+        const randomDigit = digits[Math.floor(Math.random() * digits.length)];
+        randomID += randomDigit;
+      }
+      return randomID;
     }
 
-    for (let i = 0; i < 5; i++) {
-      const randomDigit = digits[Math.floor(Math.random() * digits.length)];
-      randomID += randomDigit;
+    let randomID = generateRandomID();
+    allGameCards.cardId.push(`${randomID}`);
+
+    let randomNumber = Math.floor(Math.random() * heroNames.length);
+    allGameCards.name.push(`${heroNames[randomNumber]}`);
+
+    allGameCards.text.push(`${heroDescription[randomNumber]}`);
+    allGameCards.picture.push(randomNumber);
+
+    let cardRarity;
+    const probability = Math.random();
+    if (probability < 0.32) {
+      cardRarity = 1;
+    } else if (probability < 0.59) {
+      cardRarity = 2;
+    } else if (probability < 0.76) {
+      cardRarity = 3;
+    } else if (probability < 0.88) {
+      cardRarity = 4;
+    } else {
+      cardRarity = 5;
     }
-    return randomID;
+
+    let randomRarity = heroRarity[cardRarity - 1];
+    allGameCards.card.push(`${randomRarity}`);
+    allGameCards.diamond.push(`${randomRarity}`);
+    allGameCards.rarity.push(`${randomRarity}`);
+    rarityCardPower = cardRarity - 1;
+    if (rarityCardPower === 0) {
+      heroPower = Math.floor(Math.random() * 50) + 1;
+    } else if (rarityCardPower === 1) {
+      heroPower = Math.floor(Math.random() * 50) + 50;
+    } else if (rarityCardPower === 2) {
+      heroPower = Math.floor(Math.random() * 50) + 100;
+    } else if (rarityCardPower === 3) {
+      heroPower = Math.floor(Math.random() * 50) + 150;
+    } else {
+      heroPower = Math.floor(Math.random() * 50) + 200;
+    }
+
+    allGameCards.power.push(heroPower);
   }
-
-  let randomID = generateRandomID();
-  allGameCards.cardId.push(`${randomID}`);
-
-  let randomNumber = Math.floor(Math.random() * heroNames.length);
-  allGameCards.name.push(`${heroNames[randomNumber]}`);
-
-  allGameCards.text.push(`${heroDescription[randomNumber]}`);
-  allGameCards.picture.push(randomNumber);
-
-  let cardRarity;
-  const probability = Math.random();
-  if (probability < 0.32) {
-    cardRarity = 1;
-  } else if (probability < 0.59) {
-    cardRarity = 2;
-  } else if (probability < 0.76) {
-    cardRarity = 3;
-  } else if (probability < 0.88) {
-    cardRarity = 4;
-  } else {
-    cardRarity = 5;
-  }
-
-  let randomRarity = heroRarity[cardRarity - 1];
-  allGameCards.card.push(`${randomRarity}`);
-  allGameCards.diamond.push(`${randomRarity}`);
-  allGameCards.rarity.push(`${randomRarity}`);
-  rarityCardPower = cardRarity - 1;
-  if (rarityCardPower === 0) {
-    heroPower = Math.floor(Math.random() * 50) + 1;
-  } else if (rarityCardPower === 1) {
-    heroPower = Math.floor(Math.random() * 50) + 50;
-  } else if (rarityCardPower === 2) {
-    heroPower = Math.floor(Math.random() * 50) + 100;
-  } else if (rarityCardPower === 3) {
-    heroPower = Math.floor(Math.random() * 50) + 150;
-  } else {
-    heroPower = Math.floor(Math.random() * 50) + 200;
-  }
-
-  allGameCards.power.push(heroPower);
 }
 
 let cardChar = '';
@@ -145,9 +148,60 @@ let cardPower = '';
 let cardPicture = '';
 let cardText = '';
 let cardIdd = '';
-
 let sectionName = '';
 // openPack START
+
+// select CHAR START
+// PICTURE
+let profilePicture = 1;
+let prevButton = document.getElementById('prevPicture');
+let nextButton = document.getElementById('nextPicture');
+let profilePictureSelected = document.getElementById('profilePicture');
+
+prevButton.addEventListener('click', function () {
+  profilePicture--;
+  if (profilePicture < 1) {
+    profilePicture = 6;
+  }
+  profilePictureSelected.src = `./img/profile/avatar-${profilePicture}.png`;
+});
+nextButton.addEventListener('click', function () {
+  profilePicture++;
+  if (profilePicture > 6) {
+    profilePicture = 1;
+  }
+  profilePictureSelected.src = `./img/profile/avatar-${profilePicture}.png`;
+});
+
+// NAME
+let profileName = document.getElementById('profileName');
+let profileNameSaved = '';
+profileName.addEventListener('input', function () {
+  let profilNameRealTime = profileName.value;
+  profileNameSaved = profilNameRealTime;
+  console.log(profileNameSaved);
+});
+// select CHAR END
+
+function StartNewGame() {
+  let arena = document.getElementById('gameArena');
+  let arenaWelcome = document.getElementById('welcome');
+  let userName = document.getElementById('warNameHome');
+  let userPicture = document.getElementById('warProfileHome');
+  userPicture.src = `./img/profile/avatar-${profilePicture}.png`;
+
+  if (profileNameSaved === '') {
+    profileNameSaved = 'Player';
+  } else {
+    profileNameSaved = profileNameSaved;
+  }
+  userName.innerText = `${profileNameSaved}`;
+
+  arenaWelcome.style = 'display: none;';
+  arena.style = 'display: block;';
+  newGame();
+  openPack();
+}
 
 function openPack() {
   cardLocation = 'card-box';
@@ -232,6 +286,7 @@ function startFight() {
       console.log('Egalitate');
   }
 
+  let rounds = 10;
   let cardsToHide = document.querySelectorAll('.card-box');
   cardsToHide.forEach(function (cardToHide) {
     if (cardToHide.classList.contains('prepare-for-war') === false) {
@@ -239,8 +294,8 @@ function startFight() {
     }
 
     if (
-      (homeScore !== 2 && awayScore < 2) ||
-      (awayScore !== 2 && homeScore < 2)
+      (homeScore !== rounds && awayScore < rounds) ||
+      (awayScore !== rounds && homeScore < rounds)
     ) {
       setTimeout(function () {
         cardToHide.classList.remove('d-none');
@@ -258,8 +313,8 @@ function startFight() {
     let winStatus = document.getElementById('warStatus');
 
     switch (true) {
-      case homeScore === 2:
-        if (homeScoreMessage !== 2) {
+      case homeScore === rounds:
+        if (homeScoreMessage !== rounds) {
           homeScoreMessage.innerText = homeScoreMessage.innerText;
           awayScoreMessage.innerText = awayScoreMessage.innerText;
           win.style = 'color: var(--win)';
@@ -267,7 +322,7 @@ function startFight() {
           setTimeout(function () {
             win.innerText = ` ~Winner!~ `;
             winName.innerText = 'Username';
-            winImg.src = './img/profile/avatar-3.png';
+            winImg.src = `./img/profile/avatar-${profilePicture}.png`;
             winImg.alt = 'Winner Picture';
             winStatus.classList.add('fade-in');
             winStatus.style = 'right: 105px;';
@@ -279,15 +334,15 @@ function startFight() {
         }
         break;
 
-      case awayScore === 2:
-        if (homeScoreMessage !== 2) {
+      case awayScore === rounds:
+        if (homeScoreMessage !== rounds) {
           homeScoreMessage.innerText = homeScoreMessage.innerText;
           awayScoreMessage.innerText = awayScoreMessage.innerText;
           win.style = 'color: var(--lost)';
           setTimeout(function () {
             winName.innerText = 'Username';
             win.innerText = '~Defeated!~';
-            winImg.src = './img/profile/avatar-3.png';
+            winImg.src = `./img/profile/avatar-${profilePicture}.png`;
             winImg.alt = 'Winner Picture';
             winStatus.classList.add('fade-in');
             winStatus.style = 'right: 43px;';
