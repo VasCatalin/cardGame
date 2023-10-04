@@ -269,19 +269,19 @@ input {
 .war-score-home {
   position: absolute;
   left: 0px;
-  top: 0;
+  top: 5px;
 }
 
 .war-score-away {
   position: absolute;
   right: 0px;
-  top: 0;
+  top: 5px;
 }
 
 .warscore-text-counter h1 {
   position: absolute;
   font-size: 20px;
-  right: 35px;
+  right: 30px;
   top: 6px;
 }
 
@@ -291,7 +291,7 @@ input {
   align-items: center;
   gap: 5px;
 
-  font-size: 45px;
+  font-size: 38px;
 }
 
 #warScoreAway {
