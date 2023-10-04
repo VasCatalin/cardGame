@@ -182,6 +182,13 @@ profileName.addEventListener('input', function () {
   console.log(profileNameSaved);
 });
 // select CHAR END
+let roundsNumber = document.getElementById('rounds');
+let rounds = 0;
+roundsNumber.addEventListener('input', function () {
+  let profilNameRealTime = roundsNumber.value;
+  rounds = profilNameRealTime;
+  console.log(rounds);
+});
 
 function StartNewGame() {
   let arena = document.getElementById('gameArena');
@@ -199,6 +206,11 @@ function StartNewGame() {
 
   arenaWelcome.style = 'display: none;';
   arena.style = 'display: block;';
+  newGame();
+  openPack();
+}
+
+function restartGame() {
   newGame();
   openPack();
 }
@@ -286,7 +298,7 @@ function startFight() {
       console.log('Egalitate');
   }
 
-  let rounds = 10;
+  selectedRounds = Number(rounds);
   let cardsToHide = document.querySelectorAll('.card-box');
   cardsToHide.forEach(function (cardToHide) {
     if (cardToHide.classList.contains('prepare-for-war') === false) {
@@ -294,8 +306,8 @@ function startFight() {
     }
 
     if (
-      (homeScore !== rounds && awayScore < rounds) ||
-      (awayScore !== rounds && homeScore < rounds)
+      (homeScore !== selectedRounds && awayScore < selectedRounds) ||
+      (awayScore !== selectedRounds && homeScore < selectedRounds)
     ) {
       setTimeout(function () {
         cardToHide.classList.remove('d-none');
@@ -313,39 +325,38 @@ function startFight() {
     let winStatus = document.getElementById('warStatus');
 
     switch (true) {
-      case homeScore === rounds:
-        if (homeScoreMessage !== rounds) {
+      case homeScore === selectedRounds:
+        if (homeScoreMessage !== selectedRounds) {
           homeScoreMessage.innerText = homeScoreMessage.innerText;
           awayScoreMessage.innerText = awayScoreMessage.innerText;
           win.style = 'color: var(--win)';
 
           setTimeout(function () {
             win.innerText = ` ~Winner!~ `;
-            winName.innerText = 'Username';
+            winName.innerText = profileNameSaved;
             winImg.src = `./img/profile/avatar-${profilePicture}.png`;
             winImg.alt = 'Winner Picture';
             winStatus.classList.add('fade-in');
-            winStatus.style = 'right: 105px;';
+            // winStatus.style = 'right: 300px;';
           }, 1000);
         } else {
           homeScoreMessage.innerText = 0;
           awayScoreMessage.innerText = 0;
-          // win.innerText = 'Round Won!';
         }
         break;
 
-      case awayScore === rounds:
-        if (homeScoreMessage !== rounds) {
+      case awayScore === selectedRounds:
+        if (homeScoreMessage !== selectedRounds) {
           homeScoreMessage.innerText = homeScoreMessage.innerText;
           awayScoreMessage.innerText = awayScoreMessage.innerText;
           win.style = 'color: var(--lost)';
           setTimeout(function () {
-            winName.innerText = 'Username';
+            winName.innerText = profileNameSaved;
             win.innerText = '~Defeated!~';
             winImg.src = `./img/profile/avatar-${profilePicture}.png`;
-            winImg.alt = 'Winner Picture';
+            winImg.alt = 'Defeated Picture';
             winStatus.classList.add('fade-in');
-            winStatus.style = 'right: 43px;';
+            // winStatus.style = 'right: 300px;';
           }, 1000);
         } else {
           homeScoreMessage.innerText = 0;
@@ -355,6 +366,9 @@ function startFight() {
         break;
       default:
     }
+
+    // let restart = document.getElementById('restartGame');
+    // restart.style = 'display: block;';
 
     setTimeout(function () {
       removeCardfromWar();

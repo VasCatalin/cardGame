@@ -591,13 +591,38 @@ input {
 .war-status {
   text-transform: uppercase;
   position: absolute;
-  font-size: 60px;
+  font-size: 30px;
   text-align: center;
   z-index: 20;
   text-shadow: 0 0 15px var(--black);
 
-  bottom: 30px;
-  /* right: 90px; */
+  bottom: 110px;
+  right: 300px;
+}
+
+.restart-game {
+  background: transparent;
+  margin-bottom: 30px;
+  border: 3px solid transparent;
+  padding: 15px 25px;
+  border-radius: 50px;
+
+  text-transform: uppercase;
+  font-weight: 800;
+  cursor: pointer;
+  transition: 0.3s;
+
+  box-shadow: 0 0 5px var(--black);
+  display: none;
+}
+
+.restart-game:hover {
+  color: var(--black);
+  background: var(--win);
+}
+
+.win-img {
+  width: 200px;
 }
 
 .war-status h1 {

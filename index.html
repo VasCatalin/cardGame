@@ -67,6 +67,13 @@
               name="profile-name"
               id="profileName"
             >
+            <input
+              maxlength="8"
+              placeholder="Number of rounds..."
+              type="text"
+              name="rounds"
+              id="rounds"
+            >
             <div class="profile-controls">
               <img
                 class="open-pack"
@@ -177,6 +184,14 @@
         class="war-status"
         id="warStatus"
       >
+
+        <button
+          class="restart-game"
+          id="restartGame"
+          onclick="restartGame()"
+        >
+          Restart Game
+        </button>
         <h2
           class="win-name"
           id="winName"
