@@ -210,8 +210,10 @@ function StartNewGame() {
   openPack();
 }
 
-function restartGame() {
-  location.reload();
+if (rounds !== 0) {
+  function restartGame() {
+    location.reload();
+  }
 }
 
 function openPack() {
