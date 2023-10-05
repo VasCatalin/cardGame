@@ -190,30 +190,30 @@ roundsNumber.addEventListener('input', function () {
   console.log(rounds);
 });
 
-function StartNewGame() {
-  let arena = document.getElementById('gameArena');
-  let arenaWelcome = document.getElementById('welcome');
-  let userName = document.getElementById('warNameHome');
-  let userPicture = document.getElementById('warProfileHome');
-  userPicture.src = `./img/profile/avatar-${profilePicture}.png`;
+if (rounds !== 0) {
+  function StartNewGame() {
+    let arena = document.getElementById('gameArena');
+    let arenaWelcome = document.getElementById('welcome');
+    let userName = document.getElementById('warNameHome');
+    let userPicture = document.getElementById('warProfileHome');
+    userPicture.src = `./img/profile/avatar-${profilePicture}.png`;
 
-  if (profileNameSaved === '') {
-    profileNameSaved = 'Player';
-  } else {
-    profileNameSaved = profileNameSaved;
+    if (profileNameSaved === '') {
+      profileNameSaved = 'Player';
+    } else {
+      profileNameSaved = profileNameSaved;
+    }
+    userName.innerText = `${profileNameSaved}`;
+
+    arenaWelcome.style = 'display: none;';
+    arena.style = 'display: block;';
+    newGame();
+    openPack();
   }
-  userName.innerText = `${profileNameSaved}`;
-
-  arenaWelcome.style = 'display: none;';
-  arena.style = 'display: block;';
-  newGame();
-  openPack();
 }
 
-if (rounds !== 0) {
-  function restartGame() {
-    location.reload();
-  }
+function restartGame() {
+  location.reload();
 }
 
 function openPack() {
