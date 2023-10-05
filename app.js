@@ -211,8 +211,7 @@ function StartNewGame() {
 }
 
 function restartGame() {
-  newGame();
-  openPack();
+  location.reload();
 }
 
 function openPack() {
@@ -338,6 +337,10 @@ function startFight() {
             winImg.alt = 'Winner Picture';
             winStatus.classList.add('fade-in');
             winStatus.style = 'right: 300px;';
+
+            let restart = document.getElementById('restartGame');
+            restart.classList.remove('d-none');
+            restart.style = 'left: 105px;';
           }, 1000);
         } else {
           homeScoreMessage.innerText = 0;
@@ -357,6 +360,11 @@ function startFight() {
             winImg.alt = 'Defeated Picture';
             winStatus.classList.add('fade-in');
             winStatus.style = 'right: 265px;';
+
+            let restart = document.getElementById('restartGame');
+            restart.classList.remove('d-none');
+
+            restart.style = 'left: 134px;';
           }, 1000);
         } else {
           homeScoreMessage.innerText = 0;
@@ -366,9 +374,6 @@ function startFight() {
         break;
       default:
     }
-
-    // let restart = document.getElementById('restartGame');
-    // restart.style = 'display: block;';
 
     setTimeout(function () {
       removeCardfromWar();
@@ -602,15 +607,6 @@ function openNewPack() {
 
   cardHeroFooter.appendChild(cardHeroFooterH);
   // create cardHeroFooterH END
-
-  // // // create footerButton START
-  // const cardHeroFooterBtn = document.createElement('button');
-  // cardHeroFooterBtn.id = 'btnAttack';
-  // cardHeroFooterBtn.classList.add('btn-attack');
-  // cardHeroFooterBtn.innerText = 'Attack!';
-  // cardHeroFooterBtn.onclick = openPack;
-  // cardHeroFooter.appendChild(cardHeroFooterBtn);
-  // // // create footerButton END
 
   sectionCardTop.appendChild(cardHeroFooter);
   // create cardHeroFooter END
