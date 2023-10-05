@@ -178,20 +178,20 @@ let profileName = document.getElementById('profileName');
 let profileNameSaved = '';
 profileName.addEventListener('input', function () {
   let profilNameRealTime = profileName.value;
-  profileNameSaved = profilNameRealTime;
+  profileNameSaved = profilNameRealTime.replace(/[^a-zA-Z0-9]/g, '');
   console.log(profileNameSaved);
 });
 // select CHAR END
 let roundsNumber = document.getElementById('rounds');
 let rounds = 0;
 roundsNumber.addEventListener('input', function () {
-  let profilNameRealTime = Math.abs(roundsNumber.value);
+  let profilNameRealTime = roundsNumber.value;
   rounds = profilNameRealTime;
   console.log(rounds);
 });
 
-if (rounds !== 0) {
-  function StartNewGame() {
+function StartNewGame() {
+  if (rounds > 0 && rounds <= 20) {
     let arena = document.getElementById('gameArena');
     let arenaWelcome = document.getElementById('welcome');
     let userName = document.getElementById('warNameHome');
@@ -209,6 +209,8 @@ if (rounds !== 0) {
     arena.style = 'display: block;';
     newGame();
     openPack();
+  } else {
+    alert('Numarul de runde trebuie sa fie intre 1 si 20');
   }
 }
 
@@ -296,7 +298,7 @@ function startFight() {
       break;
 
     default:
-      console.log('Egalitate');
+      alert('Egalitate');
   }
 
   selectedRounds = Number(rounds);
@@ -398,7 +400,7 @@ function attack() {
 
   // let checkCard = warCards.cardId;
   if (warCards.name.length === 0) {
-    console.log('nu ai selectat carte');
+    alert('Nu ai selectat carte');
   } else {
     sectionName = 'battleContainer';
     openPack();
