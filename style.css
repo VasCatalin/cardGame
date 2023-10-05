@@ -532,6 +532,15 @@ input {
   padding-top: 10px;
 }
 
+.battle-container-img h3 {
+  position: absolute;
+  cursor: pointer;
+  color: var(--black);
+  text-shadow: 0 0 1px var(--black);
+  left: -5px;
+  cursor: pointer;
+}
+
 .battle-container-img:hover img {
   scale: 1.1;
 }
