@@ -185,7 +185,7 @@ profileName.addEventListener('input', function () {
 let roundsNumber = document.getElementById('rounds');
 let rounds = 0;
 roundsNumber.addEventListener('input', function () {
-  let profilNameRealTime = roundsNumber.value;
+  let profilNameRealTime = Math.abs(roundsNumber.value);
   rounds = profilNameRealTime;
   console.log(rounds);
 });
